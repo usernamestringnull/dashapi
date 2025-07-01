@@ -58,16 +58,13 @@ if (file_exists(__DIR__ . '/../db.php')) {
 }
 ?>
 <?php
-$config = require __DIR__ . '/../db.php';
-$pdo = new PDO("mysql:host={$config['host']};dbname={$config['dbname']}", $config['username'], $config['password']);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $mailbox = $_POST['mailbox'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $prefix = $_POST['prefix'] ?? '';
 $apikey = bin2hex(random_bytes(16));
 
-$pdo->prepare("
+$conn->prepare("
     INSERT INTO users (mailbox, password, prefix, apikey, is_admin, is_superadmin)
     VALUES (?, ?, ?, ?, 1, 1)
 ")->execute([$mailbox, $password, $prefix, $apikey]);
@@ -75,5 +72,5 @@ $pdo->prepare("
 array_map('unlink', glob(__DIR__ . '/*.php'));
 rmdir(__DIR__);
 
-echo "<h2>✅ Configuración completada. Puedes usar la aplicación.</h2>";
-echo '<a href="../index.php">Ir a la aplicación</a>';
+echo "<h2>✅ Complete...</h2>";
+echo '<a href="../index.php">Go to login</a>';
