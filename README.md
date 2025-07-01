@@ -13,7 +13,8 @@ It provides a clean, centralized interface to work with multiple Clouding accoun
 
 ## 🚀 Getting Started
 
-1. Clone the repository: git clone https://github.com/usernamestringnull/dashapi.git /var/www/html && chown www-data:www-data /var/www/html -R
+1. Clone the repository: 
+<pre>git clone https://github.com/usernamestringnull/dashapi.git /var/www/html && chown www-data:www-data /var/www/html -R</pre>
 2. Configure your environment and API keys.
 3. Run the panel locally or deploy it on your preferred hosting.
 
