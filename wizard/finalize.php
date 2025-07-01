@@ -64,10 +64,10 @@ $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $prefix = $_POST['prefix'] ?? '';
 $apikey = bin2hex(random_bytes(16));
 
-$conn->prepare("
-    INSERT INTO users (mailbox, password, prefix, apikey, is_admin, is_superadmin)
-    VALUES (?, ?, ?, ?, 1, 1)
-")->execute([$mailbox, $password, $prefix, $apikey]);
+$stmt = $conn->prepare("INSERT INTO users (mailbox, password, prefix, apikey, is_admin, is_superadmin) VALUES (?, ?, ?, ?, 1, 1)");
+$stmt->bind_param("ssss", $mailbox, $password, $prefix, $apikey);
+$stmt->execute();
+$stmt->close();
 
 array_map('unlink', glob(__DIR__ . '/*.php'));
 rmdir(__DIR__);
