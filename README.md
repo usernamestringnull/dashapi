@@ -27,7 +27,7 @@ It provides a clean, centralized interface to work with multiple Clouding accoun
 ## 📚 Documentation
 
 Check the full API documentation at:  
-🔗 https://docs.clouding.io
+🔗 https://api.clouding.io
 
 For advanced configuration, impersonation setup, and user role management, refer to the `docs/` folder in the repository.
 
